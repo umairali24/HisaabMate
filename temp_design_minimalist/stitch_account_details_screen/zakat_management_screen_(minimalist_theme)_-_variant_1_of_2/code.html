@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HisaabMate - Zakat Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1c2630",
+                        "surface-input": "#25313d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "sm": "0.125rem", "lg": "0.375rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display antialiased selection:bg-primary selection:text-white">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-5 py-4 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800/50">
+<div>
+<h1 class="text-gray-900 dark:text-white text-xl font-bold tracking-tight">Zakat Calculator</h1>
+<p class="text-xs text-gray-500 dark:text-gray-400">Minimalist Mode</p>
+</div>
+<button aria-label="Toggle Incognito Mode" class="group flex items-center justify-center w-10 h-10 rounded hover:bg-gray-200 dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors">visibility_off</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col gap-6 p-5 pb-32 max-w-lg mx-auto w-full">
+<!-- Hawl Status (Lunar Year) -->
+<section class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Hawl Status <span class="normal-case font-normal text-gray-500 text-xs ml-1">(Lunar Year)</span></h2>
+<span class="text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">2 Months Left</span>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between text-xs mb-2 text-gray-500 dark:text-gray-400">
+<span>Start: 1st Ramadan</span>
+<span>Target: 1st Ramadan</span>
+</div>
+<div class="h-2 w-full bg-gray-100 dark:bg-surface-input rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 83%;"></div>
+</div>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-3 italic">
+                    "Saal Pura Hone Mein 2 Maheenay Baqi"
+                </p>
+</div>
+</section>
+<!-- Current Rates (Nisab) -->
+<section class="flex flex-col gap-3">
+<h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider border-l-2 border-primary pl-2">
+                Market Rates (Nisab)
+            </h3>
+<div class="grid grid-cols-2 gap-3">
+<!-- Gold Rate -->
+<div class="bg-white dark:bg-surface-dark p-3 rounded border border-gray-200 dark:border-gray-800 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Gold (per tola)</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 text-xs">PKR</span>
+<input class="w-full bg-transparent border-none p-0 pl-8 text-right text-sm font-mono font-medium text-gray-900 dark:text-white focus:ring-0 placeholder-gray-600" placeholder="0" type="text" value="215,000"/>
+</div>
+</div>
+<!-- Silver Rate -->
+<div class="bg-white dark:bg-surface-dark p-3 rounded border border-gray-200 dark:border-gray-800 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Silver (per tola)</label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 text-xs">PKR</span>
+<input class="w-full bg-transparent border-none p-0 pl-8 text-right text-sm font-mono font-medium text-gray-900 dark:text-white focus:ring-0 placeholder-gray-600" placeholder="0" type="text" value="2,550"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Assets Input (Kul Maal) -->
+<section class="flex flex-col gap-4">
+<h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider border-l-2 border-primary pl-2">
+                Assets (Kul Maal)
+            </h3>
+<div class="flex flex-col gap-3">
+<!-- Cash -->
+<div class="flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded border border-gray-200 dark:border-gray-800">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Cash &amp; Bank</span>
+<span class="text-xs text-gray-500 italic">Naqad Raqam</span>
+</div>
+<div class="w-40 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-xs font-medium">PKR</span>
+<input class="w-full bg-gray-50 dark:bg-surface-input border-none rounded py-2 pl-10 pr-3 text-right text-sm font-mono font-semibold text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 placeholder-gray-400" placeholder="0" type="text" value="450,000"/>
+</div>
+</div>
+<!-- Gold/Silver Value -->
+<div class="flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded border border-gray-200 dark:border-gray-800">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Gold &amp; Silver Value</span>
+<span class="text-xs text-gray-500 italic">Sona aur Chandi</span>
+</div>
+<div class="w-40 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-xs font-medium">PKR</span>
+<input class="w-full bg-gray-50 dark:bg-surface-input border-none rounded py-2 pl-10 pr-3 text-right text-sm font-mono font-semibold text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 placeholder-gray-400" placeholder="0" type="text" value="1,200,000"/>
+</div>
+</div>
+<!-- Loans Given -->
+<div class="flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded border border-gray-200 dark:border-gray-800">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Loans Given</span>
+<span class="text-xs text-gray-500 italic">Udhaar Diya (Milna hai)</span>
+</div>
+<div class="w-40 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 text-xs font-medium">PKR</span>
+<input class="w-full bg-gray-50 dark:bg-surface-input border-none rounded py-2 pl-10 pr-3 text-right text-sm font-mono font-semibold text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/50 placeholder-gray-400" placeholder="0" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Liabilities (Deductible) -->
+<section class="flex flex-col gap-4">
+<h3 class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider border-l-2 border-red-500 pl-2">
+                Liabilities (Qarza)
+            </h3>
+<div class="flex flex-col gap-3">
+<!-- Loans Taken -->
+<div class="flex items-center justify-between bg-white dark:bg-surface-dark p-4 rounded border border-red-100 dark:border-red-900/30">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-gray-900 dark:text-white">Loans Taken</span>
+<span class="text-xs text-gray-500 italic">Udhaar Liya (Dena hai)</span>
+</div>
+<div class="w-40 relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-red-500/70 text-xs font-medium">-PKR</span>
+<input class="w-full bg-red-50 dark:bg-red-900/10 border-none rounded py-2 pl-12 pr-3 text-right text-sm font-mono font-semibold text-red-700 dark:text-red-400 focus:ring-2 focus:ring-red-500/50 placeholder-red-300" placeholder="0" type="text" value="50,000"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Result Footer -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-white dark:bg-[#0b1219] border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] pb-6 pt-4 px-5">
+<div class="max-w-lg mx-auto w-full flex flex-col gap-4">
+<!-- Totals Row -->
+<div class="flex justify-between items-center text-sm">
+<div class="flex flex-col">
+<span class="text-gray-500 dark:text-gray-400">Total Net Assets</span>
+<span class="text-xs text-gray-400 italic">Kul Maal - Qarza</span>
+</div>
+<span class="font-mono font-bold text-gray-900 dark:text-white">PKR 1,600,000</span>
+</div>
+<div class="h-px bg-gray-100 dark:bg-gray-800 w-full"></div>
+<!-- Zakat Payable & Action -->
+<div class="flex gap-4 items-center">
+<div class="flex flex-col flex-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-primary mb-1">Zakat Payable (2.5%)</span>
+<div class="flex items-baseline gap-1">
+<span class="text-lg text-gray-500 dark:text-gray-400 font-medium">PKR</span>
+<span class="text-3xl font-bold font-mono text-gray-900 dark:text-white tracking-tight">40,000</span>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white font-medium rounded px-6 py-3 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>Save</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HisaabMate - Mere Ahdaaf</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", 
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for sleek look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #314d68;
+            border-radius: 3px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+<div class="relative min-h-screen flex flex-col w-full max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-black/5 dark:border-white/5 px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-1 -ml-1 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Mere Ahdaaf</h1>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Privacy Toggle" class="flex items-center justify-center w-10 h-10 rounded hover:bg-black/5 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</button>
+<button aria-label="Filter" class="flex items-center justify-center w-10 h-10 rounded hover:bg-black/5 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-[22px]">sort</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 py-6 flex flex-col gap-6">
+<!-- Summary Stats -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-[#1E1E1E] p-4 rounded border border-slate-200 dark:border-white/5 shadow-sm flex flex-col justify-between h-[100px] group">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Jama Shuda</span>
+<span class="material-symbols-outlined text-primary text-[20px] opacity-80 group-hover:scale-110 transition-transform">savings</span>
+</div>
+<div>
+<p class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Rs. 1.5L</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1E1E1E] p-4 rounded border border-slate-200 dark:border-white/5 shadow-sm flex flex-col justify-between h-[100px] group">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Kul Hadaf</span>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 text-[20px] group-hover:scale-110 transition-transform">flag</span>
+</div>
+<div>
+<p class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Rs. 50L</p>
+</div>
+</div>
+</section>
+<!-- Active Goals Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Jari Ahdaaf</h2>
+<span class="text-xs font-medium text-slate-500 dark:text-slate-400">3 Active</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Goal Item 1 -->
+<div class="group relative bg-white dark:bg-[#1E1E1E] rounded p-5 border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight mb-1">Hajj Fund</h3>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px]">event</span>
+<span class="text-xs font-medium">Target: Dec 2024</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded mb-1">40%</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative h-2 w-full bg-slate-100 dark:bg-black rounded-full overflow-hidden mb-3">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 40%"></div>
+</div>
+<!-- Amount Details -->
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-bold text-primary">Rs. 400k</span>
+<span class="text-xs text-slate-400">/ 1,000k</span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-500">Baqaya: Rs. 600k</span>
+</div>
+</div>
+<!-- Goal Item 2 -->
+<div class="group relative bg-white dark:bg-[#1E1E1E] rounded p-5 border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight mb-1">Laptop Upgrade</h3>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px]">event</span>
+<span class="text-xs font-medium">Target: June 2024</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded mb-1">10%</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative h-2 w-full bg-slate-100 dark:bg-black rounded-full overflow-hidden mb-3">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 10%"></div>
+</div>
+<!-- Amount Details -->
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-bold text-primary">Rs. 20k</span>
+<span class="text-xs text-slate-400">/ 200k</span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-500">Baqaya: Rs. 180k</span>
+</div>
+</div>
+<!-- Goal Item 3 -->
+<div class="group relative bg-white dark:bg-[#1E1E1E] rounded p-5 border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 transition-colors shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-bold text-base text-slate-900 dark:text-white leading-tight mb-1">Emergency Fund</h3>
+<div class="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px]">all_inclusive</span>
+<span class="text-xs font-medium">Koi Tareekh Nahi</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded mb-1">25%</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative h-2 w-full bg-slate-100 dark:bg-black rounded-full overflow-hidden mb-3">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 25%"></div>
+</div>
+<!-- Amount Details -->
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-bold text-primary">Rs. 125k</span>
+<span class="text-xs text-slate-400">/ 500k</span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-500">Baqaya: Rs. 375k</span>
+</div>
+</div>
+</div>
+</section>
+<div class="h-20"></div> <!-- Spacer for FAB -->
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="flex items-center gap-2 h-14 pl-4 pr-6 bg-primary hover:bg-[#0b6ecc] text-white rounded shadow-lg shadow-blue-900/40 transform active:scale-95 transition-all duration-200 border border-white/10">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<span class="font-bold text-sm tracking-wide">Naya Goal</span>
+</button>
+</div>
+</div>
+</body></html>

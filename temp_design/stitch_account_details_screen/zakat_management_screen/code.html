@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zakat Calculator - HisaabMate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#25f46a",
+              "background-light": "#f5f8f6",
+              "background-dark": "#102216",
+              "card-light": "#ffffff",
+              "card-dark": "#1a2e22",
+              "input-bg-light": "#e7f4eb",
+              "input-bg-dark": "#233b2d",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'glow': '0 0 15px rgba(37, 244, 106, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d1c12] dark:text-white font-display overflow-hidden h-screen flex flex-col relative group/design-root">
+<!-- Header -->
+<header class="flex-none px-5 pt-12 pb-4 bg-background-light dark:bg-background-dark z-20 flex items-center justify-between">
+<div>
+<h1 class="text-2xl font-extrabold tracking-tight text-[#0d1c12] dark:text-white">Zakat Calculator</h1>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">HisaabMate • Playful Mode</p>
+</div>
+<button aria-label="Toggle Incognito Mode" class="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-white dark:bg-card-dark shadow-soft border border-gray-100 dark:border-[#233b2d] text-[#0d1c12] dark:text-white transition-transform active:scale-90 hover:shadow-md">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto hide-scrollbar px-5 pb-40 space-y-6">
+<!-- Hawl Tracker Card -->
+<div class="rounded-2xl bg-white dark:bg-card-dark p-5 shadow-soft border border-gray-100 dark:border-white/5">
+<div class="flex justify-between items-center mb-3">
+<p class="text-[#0d1c12] dark:text-white text-base font-bold leading-normal">Hawl Tracker</p>
+<span class="bg-primary/20 text-[#0d6b36] dark:text-primary text-xs font-bold px-3 py-1.5 rounded-full">8/12 Months</span>
+</div>
+<!-- Progress Bar -->
+<div class="h-4 rounded-full bg-[#cee8d7] dark:bg-white/10 w-full overflow-hidden">
+<div class="h-full rounded-full bg-primary relative overflow-hidden" style="width: 66%;">
+<div class="absolute inset-0 bg-white/20" style="background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem;"></div>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-3">
+<span class="material-symbols-outlined text-[#499c65] dark:text-primary text-lg">event</span>
+<p class="text-[#499c65] dark:text-primary/90 text-sm font-medium leading-normal">Apka Hawl Pura Hoga: <span class="font-bold">12 Ramadan</span></p>
+</div>
+</div>
+<!-- Nisab Threshold Info -->
+<div class="rounded-xl border border-primary/30 bg-primary/5 p-4 flex flex-row items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#0d1c12] dark:text-white text-sm font-bold leading-tight">Current Nisab Threshold</p>
+<p class="text-[#499c65] dark:text-primary/80 text-xs font-normal leading-normal">Based on current silver rates (52.5 Tola)</p>
+</div>
+<a class="text-xs font-bold leading-normal tracking-wide flex items-center gap-1 text-[#0d1c12] dark:text-white bg-white dark:bg-white/10 px-3 py-2 rounded-lg shadow-sm whitespace-nowrap" href="#">
+                Update
+                <span class="material-symbols-outlined text-sm">edit</span>
+</a>
+</div>
+<!-- Asset Input Cards -->
+<div class="space-y-4">
+<!-- Gold Card -->
+<div class="rounded-2xl bg-white dark:bg-card-dark p-5 shadow-soft border border-gray-100 dark:border-white/5">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center text-2xl shadow-inner border border-yellow-200 dark:border-yellow-800">🥇</div>
+<div>
+<p class="text-[#0d1c12] dark:text-white text-lg font-bold leading-tight">Sona (Gold)</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal">Last updated: Today</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<label class="flex flex-col flex-1 min-w-0">
+<p class="text-[#0d1c12] dark:text-gray-300 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Weight (Tola)</p>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 p-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="0" type="number"/>
+</label>
+<label class="flex flex-col flex-1 min-w-0">
+<p class="text-[#0d1c12] dark:text-gray-300 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Rate / Tola</p>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">Rs</span>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 pl-10 pr-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="214,000" type="number"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Silver Card -->
+<div class="rounded-2xl bg-white dark:bg-card-dark p-5 shadow-soft border border-gray-100 dark:border-white/5">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-2xl shadow-inner border border-gray-200 dark:border-gray-700">🥈</div>
+<div>
+<p class="text-[#0d1c12] dark:text-white text-lg font-bold leading-tight">Chandi (Silver)</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal">Enter details manually</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<label class="flex flex-col flex-1 min-w-0">
+<p class="text-[#0d1c12] dark:text-gray-300 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Weight (Tola)</p>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 p-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="0" type="number"/>
+</label>
+<label class="flex flex-col flex-1 min-w-0">
+<p class="text-[#0d1c12] dark:text-gray-300 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Rate / Tola</p>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">Rs</span>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 pl-10 pr-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="2,500" type="number"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Cash Card -->
+<div class="rounded-2xl bg-white dark:bg-card-dark p-5 shadow-soft border border-gray-100 dark:border-white/5">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-2xl shadow-inner border border-green-200 dark:border-green-800">💵</div>
+<div>
+<p class="text-[#0d1c12] dark:text-white text-lg font-bold leading-tight">Cash &amp; Bank</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal">Savings, Prize bonds, etc.</p>
+</div>
+</div>
+</div>
+<label class="flex flex-col w-full">
+<p class="text-[#0d1c12] dark:text-gray-300 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Total Amount</p>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">Rs</span>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 pl-10 pr-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="e.g. 50,000" type="number"/>
+</div>
+</label>
+</div>
+<!-- Udhaar / Loans Card -->
+<div class="rounded-2xl bg-white dark:bg-card-dark p-5 shadow-soft border border-gray-100 dark:border-white/5">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-2xl shadow-inner border border-blue-200 dark:border-blue-800">🤝</div>
+<div>
+<p class="text-[#0d1c12] dark:text-white text-lg font-bold leading-tight">Udhaar (Loans)</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal">Assets vs Liabilities</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<label class="flex flex-col flex-1 min-w-0 group">
+<div class="flex items-center gap-1 mb-2 ml-1">
+<span class="material-symbols-outlined text-green-500 text-base">arrow_upward</span>
+<p class="text-green-600 dark:text-green-400 text-xs font-bold uppercase tracking-wider">Diya (Given)</p>
+</div>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">Rs</span>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 pl-10 pr-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="0" type="number"/>
+</div>
+</label>
+<label class="flex flex-col flex-1 min-w-0 group">
+<div class="flex items-center gap-1 mb-2 ml-1">
+<span class="material-symbols-outlined text-red-500 text-base">arrow_downward</span>
+<p class="text-red-500 dark:text-red-400 text-xs font-bold uppercase tracking-wider">Liya (Taken)</p>
+</div>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">Rs</span>
+<input class="form-input w-full rounded-xl text-[#0d1c12] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary border-none bg-input-bg-light dark:bg-input-bg-dark h-12 placeholder:text-gray-400 pl-10 pr-4 text-base font-semibold leading-normal transition-all" inputmode="decimal" placeholder="0" type="number"/>
+</div>
+</label>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Calculation -->
+<div class="fixed bottom-0 left-0 w-full z-30">
+<!-- Gradient fade -->
+<div class="h-10 w-full bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none"></div>
+<div class="bg-white/80 dark:bg-[#1a2e22]/90 glass-panel border-t border-gray-200 dark:border-white/10 p-5 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+<div class="flex justify-between items-end mb-4">
+<div class="flex flex-col">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Total Zakat Banti Hai</p>
+<div class="flex items-baseline gap-1">
+<span class="text-primary font-bold text-xl">Rs</span>
+<span class="text-4xl font-extrabold text-[#0d1c12] dark:text-white tracking-tight tabular-nums">12,500</span>
+</div>
+</div>
+<div class="bg-primary/10 px-3 py-1 rounded-lg">
+<p class="text-primary text-xs font-bold">2.5% applied</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-[#1ee060] text-[#0d1c12] rounded-2xl h-14 font-bold text-lg shadow-glow transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">save</span>
+                Save Record
+            </button>
+</div>
+</div>
+</body></html>

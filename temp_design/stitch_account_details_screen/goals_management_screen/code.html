@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HisaabMate - Goals</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f4d125",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#221f10",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2c2918",
+                        "text-main-light": "#1c190d",
+                        "text-main-dark": "#fcfbf8",
+                        "text-sub-light": "#6b6651",
+                        "text-sub-dark": "#beb8a0",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "2rem", 
+                        "xl": "3rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display antialiased selection:bg-primary selection:text-black pb-24">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md transition-colors duration-300">
+<div class="flex items-center justify-between px-4 py-4">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full active:bg-black/5 dark:active:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-text-main-light dark:text-text-main-dark">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-text-main-light dark:text-text-main-dark">Mera Hadaf</h1>
+<button class="flex size-10 items-center justify-center rounded-full bg-surface-light dark:bg-surface-dark shadow-sm border border-black/5 dark:border-white/5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-text-main-light dark:text-text-main-dark text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+<main class="px-4 flex flex-col gap-6">
+<!-- Total Savings Summary Card -->
+<div class="relative w-full overflow-hidden rounded-lg bg-primary p-6 shadow-lg shadow-primary/20">
+<!-- Decorative pattern overlay -->
+<div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/20 blur-2xl"></div>
+<div class="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-yellow-600/10 blur-xl"></div>
+<div class="relative flex flex-col items-center justify-center gap-2 text-center">
+<p class="text-sm font-semibold uppercase tracking-wider text-black/70">Total Bachat</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-extrabold text-[#1c190d]">Rs. 1,25,000</span>
+</div>
+<div class="mt-2 inline-flex items-center gap-1 rounded-full bg-white/30 px-3 py-1 text-xs font-bold text-[#1c190d] backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>Pichle mahine se +12%</span>
+</div>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between pt-2">
+<h2 class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">Active Goals</h2>
+<button class="text-sm font-semibold text-text-sub-light dark:text-text-sub-dark hover:text-primary transition-colors">View All</button>
+</div>
+<!-- Goal Card 1: Bike (High Priority) -->
+<div class="group relative flex flex-col gap-4 rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-black/5 dark:border-white/5 transition-all hover:shadow-md">
+<!-- Header -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-3xl dark:bg-blue-900/30">
+                        🏍️
+                    </div>
+<div>
+<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">Bike Ki Bachat</h3>
+<p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Personal Transport</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-1 text-xs font-bold text-green-700 dark:text-green-300">
+                        On Track
+                    </span>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="space-y-2">
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">Rs. 45k</p>
+<p class="mb-1 text-sm font-semibold text-text-sub-light dark:text-text-sub-dark">Target: 70k</p>
+</div>
+<!-- Progress Bar Container -->
+<div class="relative h-5 w-full rounded-full bg-background-light dark:bg-black/20 overflow-visible">
+<!-- The Background Track -->
+<div class="absolute inset-0 rounded-full bg-stone-200 dark:bg-stone-700/50"></div>
+<!-- The Fill -->
+<div class="absolute left-0 top-0 h-full rounded-full bg-primary transition-all duration-1000 ease-out flex items-center justify-end pr-1" style="width: 65%;">
+<!-- Shine effect -->
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent rounded-full"></div>
+<!-- Current Value indicator dot inside bar -->
+<div class="h-3 w-3 rounded-full bg-white shadow-sm"></div>
+</div>
+<!-- Milestone Markers (Stars) -->
+<div class="absolute top-1/2 -translate-y-1/2 left-[25%] flex flex-col items-center">
+<div class="h-1.5 w-1.5 rounded-full bg-white/50 z-10"></div>
+</div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[50%] flex flex-col items-center">
+<div class="h-1.5 w-1.5 rounded-full bg-white/50 z-10"></div>
+</div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[75%] flex flex-col items-center">
+<span class="material-symbols-outlined text-[14px] text-stone-400 dark:text-stone-600 z-10">star</span>
+</div>
+</div>
+<div class="flex justify-between pt-1">
+<p class="text-xs font-medium text-primary">Shabash! 65% complete</p>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark">6 Maheenay Baqi</p>
+</div>
+</div>
+<!-- Gamified Toggle: Round Up -->
+<div class="mt-2 flex items-center justify-between rounded-xl bg-background-light dark:bg-black/20 p-3">
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined text-[18px]">savings</span>
+</div>
+<div>
+<p class="text-sm font-bold text-text-main-light dark:text-text-main-dark">Chillar Jama Karo</p>
+<p class="text-[10px] text-text-sub-light dark:text-text-sub-dark">Auto-save spare change</p>
+</div>
+</div>
+<label class="relative inline-flex cursor-pointer items-center">
+<input checked="" class="peer sr-only" type="checkbox" value=""/>
+<div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none dark:border-gray-600 dark:bg-gray-700"></div>
+</label>
+</div>
+</div>
+<!-- Goal Card 2: Ammi's Gift (Close to completion) -->
+<div class="group relative flex flex-col gap-4 rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-black/5 dark:border-white/5 transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-pink-100 text-3xl dark:bg-pink-900/30">
+                        🎁
+                    </div>
+<div>
+<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">Ammi ka Gift</h3>
+<p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Family</p>
+</div>
+</div>
+<!-- Animated Pulse for 'Almost There' -->
+<div class="flex flex-col items-end">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">Rs. 18,000</p>
+<p class="mb-1 text-sm font-semibold text-text-sub-light dark:text-text-sub-dark">Target: 20,000</p>
+</div>
+<div class="relative h-5 w-full rounded-full bg-background-light dark:bg-black/20 overflow-visible">
+<div class="absolute inset-0 rounded-full bg-stone-200 dark:bg-stone-700/50"></div>
+<div class="absolute left-0 top-0 h-full rounded-full bg-pink-500 transition-all duration-1000 ease-out flex items-center justify-end pr-1" style="width: 90%;">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent rounded-full"></div>
+<div class="h-3 w-3 rounded-full bg-white shadow-sm"></div>
+</div>
+<div class="absolute top-1/2 -translate-y-1/2 left-[90%] -ml-1.5 z-20">
+<span class="material-symbols-outlined text-[16px] text-primary fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex justify-between pt-1">
+<p class="text-xs font-bold text-pink-600 dark:text-pink-400">Bas thora aur!</p>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark">2 Din Baqi</p>
+</div>
+</div>
+<!-- Quick Add Button -->
+<button class="mt-2 w-full rounded-full border border-pink-200 bg-pink-50 py-3 text-sm font-bold text-pink-700 hover:bg-pink-100 dark:border-pink-900/50 dark:bg-pink-900/20 dark:text-pink-300 transition-colors">
+                + Rs. 500 Add Karo
+            </button>
+</div>
+<!-- Goal Card 3: Emergency Fund (Early stage) -->
+<div class="group relative flex flex-col gap-4 rounded-lg bg-surface-light dark:bg-surface-dark p-5 shadow-sm border border-black/5 dark:border-white/5 opacity-90">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-3xl dark:bg-emerald-900/30">
+                        🛡️
+                    </div>
+<div>
+<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">Mushkil Waqt</h3>
+<p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Emergency Fund</p>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-end justify-between">
+<p class="text-2xl font-bold text-text-main-light dark:text-text-main-dark">Rs. 5,000</p>
+<p class="mb-1 text-sm font-semibold text-text-sub-light dark:text-text-sub-dark">Target: 1 Lakh</p>
+</div>
+<div class="relative h-5 w-full rounded-full bg-background-light dark:bg-black/20 overflow-visible">
+<div class="absolute inset-0 rounded-full bg-stone-200 dark:bg-stone-700/50"></div>
+<div class="absolute left-0 top-0 h-full rounded-full bg-emerald-500 transition-all duration-1000 ease-out" style="width: 5%;">
+<div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between pt-1">
+<p class="text-xs font-medium text-text-sub-light dark:text-text-sub-dark">Shuruwat achi hai</p>
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark">Open ended</p>
+</div>
+</div>
+</div>
+<!-- Spacer for FAB -->
+<div class="h-20"></div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="group flex h-16 w-16 items-center justify-center rounded-full bg-primary text-black shadow-lg shadow-primary/40 transition-transform hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[32px] font-bold group-hover:rotate-90 transition-transform duration-300">add</span>
+<span class="sr-only">Create New Goal</span>
+</button>
+</div>
+<!-- Bottom Navigation (Simplified for Context) -->
+<div class="fixed bottom-0 left-0 right-0 z-40 h-20 bg-surface-light dark:bg-surface-dark border-t border-black/5 dark:border-white/5 flex items-start justify-around pt-4 pb-6">
+<button class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark opacity-60">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">flag</span>
+<span class="text-[10px] font-bold">Goals</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark opacity-60">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="text-[10px] font-medium">Budget</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-text-sub-light dark:text-text-sub-dark opacity-60">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</div>
+</body></html>

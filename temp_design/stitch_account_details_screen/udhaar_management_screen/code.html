@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HisaabMate - Udhaar Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#258cf4",
+                        "primary-dark": "#1a6ac4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e2936",
+                        "accent-green": "#10b981",
+                        "accent-red": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 15px rgba(37, 140, 244, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen relative pb-28 selection:bg-primary/30">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
+<div class="flex items-center p-4 justify-between max-w-lg mx-auto">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-2">Udhaar Manager 📒</h2>
+<div class="flex items-center justify-end gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[24px]">visibility_off</span>
+</button>
+</div>
+</div>
+</header>
+<div class="max-w-lg mx-auto w-full flex flex-col gap-5 px-4 pt-2">
+<!-- Segmented Control -->
+<div class="flex p-1 bg-slate-200/50 dark:bg-slate-800/50 rounded-2xl relative">
+<!-- Active Indicator (Visual) -->
+<div class="absolute left-1 top-1 bottom-1 w-[calc(50%-4px)] bg-white dark:bg-slate-700 rounded-xl shadow-sm z-0"></div>
+<label class="flex-1 cursor-pointer z-10">
+<input checked="" class="peer sr-only" name="debt_type" type="radio" value="receivable"/>
+<div class="flex h-10 w-full items-center justify-center rounded-xl transition-all duration-200 text-primary font-bold text-sm">
+                    Lene hain ⬇️
+                </div>
+</label>
+<label class="flex-1 cursor-pointer z-10">
+<input class="peer sr-only" name="debt_type" type="radio" value="payable"/>
+<div class="flex h-10 w-full items-center justify-center rounded-xl transition-all duration-200 text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-200">
+                    Dene hain ⬆️
+                </div>
+</label>
+</div>
+<!-- Summary Card -->
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-blue-600 p-6 shadow-glow text-white">
+<!-- Background Decoration -->
+<div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
+<div class="absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-black/10 blur-2xl"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<div class="flex items-center justify-between opacity-90">
+<p class="text-sm font-medium tracking-wide uppercase">Kul Raqam (Receivable)</p>
+<span class="material-symbols-outlined text-[20px] opacity-75">trending_up</span>
+</div>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-sm font-semibold opacity-80">Rs.</span>
+<h1 class="text-4xl font-extrabold tracking-tight">12,500</h1>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="inline-flex items-center gap-1 rounded-full bg-white/20 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">group</span>
+                        3 Dost
+                    </span>
+<span class="inline-flex items-center gap-1 rounded-full bg-white/20 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">calendar_month</span>
+                        This Month
+                    </span>
+</div>
+</div>
+</div>
+<!-- List Header -->
+<div class="flex items-center justify-between mt-2">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">Active Debts</h3>
+<button class="text-sm font-medium text-primary hover:text-primary-dark transition-colors">See all</button>
+</div>
+<!-- Debt List -->
+<div class="flex flex-col gap-3">
+<!-- Item 1: High Priority -->
+<div class="group flex items-center justify-between gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 pr-4 shadow-soft border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 border-2 border-white dark:border-slate-700 shadow-sm" data-alt="Portrait of a young Pakistani man smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmjmuUBY12a7w3r9cR6lwwbH_yZJKsTrr1g0kpBdxtWoDpjjBPiE9_6s4AWvSGDj3OIP27g-eLWEgr9mFshwU6IGlA99cqHBYWlmvZP1kipKBmVGYWeUsYUpcR1LqABaDRfL-pXsTIfUKePc9zL7DrNxeq0t8vrz-1At8lTw3ELG9tXkcGq37OE-JhlfMbW0d0cqyxY8s6M7_tsdni5ZdojNax-Pq0e4otQUi28TG6IaUo451tCRcRk7CA_a5AEe3VrGaClawYPXM");'></div>
+<div class="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-100 border border-white dark:border-slate-800">
+<span class="text-[10px]">⏰</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-bold text-slate-900 dark:text-white truncate">Ali Bhai</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">2 days ago • Lunch</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 shrink-0">
+<p class="font-bold text-slate-900 dark:text-white">Rs. 2,000</p>
+<button class="flex items-center justify-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary hover:text-white transition-all active:scale-95">
+<span class="truncate">Yaad Karwayen</span>
+<span class="text-[10px]">👋</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex items-center justify-between gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 pr-4 shadow-soft border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 border-2 border-white dark:border-slate-700 shadow-sm" data-alt="Portrait of a woman wearing glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCplldGFPJ6euBngdhhRtf_zsY6fm6TiqrJ3AxcvdEOq3-DcC_cAXLBrArfJpqkFcWt8O7ct3SpH_GJCkYNdFiwZy-R-IFsvC6vvedrl9PSVkGNXeEsdAxoRcMsbOamtRWosOq0nA8V4gRtNcuq-7KiWZEzln4gnrSLoLPxIPPNeAeHFVs86VKFKNBQxp4DJTC_pDufkG--zeTFVTYG_37dIM1AVezGPE9Fw7BL6D8eTwoeoU-iLKTceINj6inPThaw5OGgnB13NNI");'></div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-bold text-slate-900 dark:text-white truncate">Saima Baji</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">1 week ago • Groceries</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 shrink-0">
+<p class="font-bold text-slate-900 dark:text-white">Rs. 5,500</p>
+<button class="flex items-center justify-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all active:scale-95">
+<span class="truncate">Yaad Karwayen</span>
+<span class="text-[10px]">👋</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Small amount -->
+<div class="group flex items-center justify-between gap-3 rounded-2xl bg-surface-light dark:bg-surface-dark p-3 pr-4 shadow-soft border border-transparent hover:border-primary/20 transition-all">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0 relative">
+<!-- Initial Avatar fallback style -->
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300 font-bold border-2 border-white dark:border-slate-700 shadow-sm">
+                            DW
+                        </div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-bold text-slate-900 dark:text-white truncate">Dukan Wala</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 truncate">Today • Milk/Bread</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 shrink-0">
+<p class="font-bold text-slate-900 dark:text-white">Rs. 500</p>
+<button class="flex items-center justify-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-700 px-3 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 transition-all active:scale-95">
+<span class="truncate">Yaad Karwayen</span>
+<span class="text-[10px]">👋</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Settled/Completed Look (Example) -->
+<div class="group flex items-center justify-between gap-3 rounded-2xl bg-surface-light/60 dark:bg-surface-dark/60 p-3 pr-4 border border-transparent transition-all opacity-75">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 border-2 border-white dark:border-slate-700 shadow-sm grayscale" data-alt="Portrait of a smiling man with a beard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFEFV5J_isdlw8fHeYpqNJT1q4swysNI08I05aglGxRD2B8YPftVOMtkhs-ncmkiBbFZB6N9p4MeBNYyVPx9AsQAbIDZIbb-eYpSiK0nBjXosTXSIT7w0JiseGWdSIDtuQlD3oL_HhCxv77yCOxxrAAgTb7Msrh97gAz-rNbcv5Xu_3dgZGuePYXT7l5UXvalkhzaqnJ5hCFMvD_ko2_jSJ1RQw7wL86YokDpyOiI52q5HOiWfF91bmpYjFROysNw5Nt_AgBLHvXQ");'></div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="font-bold text-slate-700 dark:text-slate-300 truncate line-through decoration-slate-400">Ahmed</p>
+<p class="text-xs text-slate-400 dark:text-slate-500 truncate">Paid Yesterday</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2 shrink-0">
+<p class="font-bold text-slate-500 dark:text-slate-400 line-through">Rs. 1,000</p>
+<span class="flex items-center justify-center gap-1 text-xs font-bold text-green-600 dark:text-green-400">
+                        Wapas Milgaye <span class="text-[10px]">✅</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6 z-30">
+<button class="group flex items-center justify-center gap-2 h-14 bg-primary hover:bg-primary-dark text-white rounded-2xl px-5 shadow-lg shadow-primary/30 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[24px]">add</span>
+<span class="font-bold text-base whitespace-nowrap">Naya Udhaar</span>
+</button>
+</div>
+</body></html>

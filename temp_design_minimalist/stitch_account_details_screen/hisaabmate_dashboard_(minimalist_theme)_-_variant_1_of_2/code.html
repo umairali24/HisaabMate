@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HisaabMate Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a2632",
+                        "border-dark": "#2a3b4d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Gradient for the FAB shadow */
+        .fab-shadow {
+            box-shadow: 0 4px 14px 0 rgba(19, 127, 236, 0.39);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white h-screen flex flex-col overflow-hidden relative selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-transparent dark:border-border-dark/50 z-10">
+<div class="flex flex-col flex-1">
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium tracking-wide uppercase mb-0.5">Khushamdeed</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Salaam, Ali</h2>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-slate-700 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="Bell" style="font-size: 24px;">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto overflow-x-hidden pb-24 hide-scrollbar">
+<!-- Hero Stats Card -->
+<div class="p-4 pt-2">
+<div class="relative flex flex-col gap-2 rounded bg-[#233648] dark:bg-[#1a2632] p-6 border border-gray-200 dark:border-[#324d67] overflow-hidden group">
+<!-- Decorative element -->
+<div class="absolute right-0 top-0 h-32 w-32 translate-x-10 -translate-y-10 rounded-full bg-primary/10 blur-3xl"></div>
+<div class="flex items-center justify-between relative z-10">
+<p class="text-slate-600 dark:text-gray-400 text-sm font-medium leading-normal">Kharch karne ke liye (Safe-to-Spend)</p>
+<button class="text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+</div>
+<div class="relative z-10 mt-1">
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">PKR 24,500</p>
+</div>
+<div class="flex items-center gap-4 mt-4 relative z-10">
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-500" style="font-size: 14px;">arrow_downward</span>
+</div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">In: 85k</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-500" style="font-size: 14px;">arrow_upward</span>
+</div>
+<span class="text-xs font-medium text-gray-500 dark:text-gray-400">Out: 60k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accounts Header -->
+<div class="flex items-end justify-between px-4 pb-2 pt-2">
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Accounts (Khatay)</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-wide hover:underline">See All</button>
+</div>
+<!-- Accounts Horizontal List -->
+<div class="flex overflow-x-auto gap-3 px-4 pb-4 hide-scrollbar snap-x">
+<!-- HBL -->
+<div class="snap-start flex min-w-[140px] flex-col justify-between gap-3 rounded bg-white dark:bg-[#1a2632] p-4 border border-gray-200 dark:border-[#324d67]">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 20px;">account_balance</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-gray-400 text-xs font-medium leading-normal mb-1">HBL Account</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-lg font-bold leading-tight">Rs. 50,000</p>
+</div>
+</div>
+<!-- Wallet -->
+<div class="snap-start flex min-w-[140px] flex-col justify-between gap-3 rounded bg-white dark:bg-[#1a2632] p-4 border border-gray-200 dark:border-[#324d67]">
+<div class="w-8 h-8 rounded bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined" style="font-size: 20px;">account_balance_wallet</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-gray-400 text-xs font-medium leading-normal mb-1">Jaib Kharch</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-lg font-bold leading-tight">Rs. 2,000</p>
+</div>
+</div>
+<!-- Easypaisa -->
+<div class="snap-start flex min-w-[140px] flex-col justify-between gap-3 rounded bg-white dark:bg-[#1a2632] p-4 border border-gray-200 dark:border-[#324d67]">
+<div class="w-8 h-8 rounded bg-green-500/10 flex items-center justify-center text-green-500">
+<span class="material-symbols-outlined" style="font-size: 20px;">smartphone</span>
+</div>
+<div>
+<p class="text-slate-500 dark:text-gray-400 text-xs font-medium leading-normal mb-1">Easypaisa</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-lg font-bold leading-tight">Rs. 5,400</p>
+</div>
+</div>
+</div>
+<!-- Transactions Header -->
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Haaliya Hisaab</h3>
+<!-- Dense Transaction Table -->
+<div class="flex flex-col px-4 gap-[1px] bg-gray-200 dark:bg-[#324d67] border border-gray-200 dark:border-[#324d67] rounded overflow-hidden">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-3 bg-white dark:bg-[#1a2632] hover:bg-gray-50 dark:hover:bg-[#233240] transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-100 dark:bg-[#111a22] text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Kiryaana (Groceries)</p>
+<p class="text-slate-500 dark:text-gray-400 text-xs leading-normal">Aaj, 10:30 AM • Cash</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">- Rs. 1,200</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-3 bg-white dark:bg-[#1a2632] hover:bg-gray-50 dark:hover:bg-[#233240] transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-100 dark:bg-[#111a22] text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined">local_gas_station</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Petrol (Fuel)</p>
+<p class="text-slate-500 dark:text-gray-400 text-xs leading-normal">Kal, 08:15 PM • HBL</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">- Rs. 500</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-3 bg-white dark:bg-[#1a2632] hover:bg-gray-50 dark:hover:bg-[#233240] transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-primary/10 text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Tankhwa (Salary)</p>
+<p class="text-slate-500 dark:text-gray-400 text-xs leading-normal">1st Nov • HBL</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary text-sm font-bold leading-tight">+ Rs. 80,000</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-3 bg-white dark:bg-[#1a2632] hover:bg-gray-50 dark:hover:bg-[#233240] transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-100 dark:bg-[#111a22] text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined">fastfood</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Dost k saath Khana</p>
+<p class="text-slate-500 dark:text-gray-400 text-xs leading-normal">28 Oct • Easypaisa</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">- Rs. 2,450</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center justify-between p-3 bg-white dark:bg-[#1a2632] hover:bg-gray-50 dark:hover:bg-[#233240] transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-gray-100 dark:bg-[#111a22] text-slate-500 dark:text-gray-400">
+<span class="material-symbols-outlined">wifi</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Internet Bill</p>
+<p class="text-slate-500 dark:text-gray-400 text-xs leading-normal">25 Oct • JazzCash</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-white text-sm font-bold leading-tight">- Rs. 3,000</p>
+</div>
+</div>
+</div>
+<div class="h-6"></div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-[88px] right-4 h-14 w-14 rounded-full bg-primary hover:bg-blue-600 text-white flex items-center justify-center fab-shadow transition-transform active:scale-95 z-20">
+<span class="material-symbols-outlined" style="font-size: 28px;">add</span>
+</button>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#101922] border-t border-gray-200 dark:border-[#324d67] h-[80px] pb-5 flex items-center justify-around z-30">
+<a class="flex flex-col items-center gap-1 p-2 text-primary w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-primary transition-colors w-16" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-primary transition-colors w-16" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] font-medium">Budget</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-primary transition-colors w-16" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</body></html>
