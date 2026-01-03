@@ -468,7 +468,10 @@ fun MinimalistDashboardContent(
                 ) 
             }
             item {
-                AccountsSection(accounts = uiState.accounts)
+                AccountsSection(
+                    accounts = uiState.accounts,
+                    onSeeAllClick = { navController.navigate(Screen.AddAccount.route) }
+                )
             }
             item {
                 TransactionSection(transactions = uiState.recentTransactions)
@@ -570,7 +573,7 @@ fun StatBadge(icon: ImageVector, text: String, color: Color) {
 }
 
 @Composable
-fun AccountsSection(accounts: List<AccountEntity>) {
+fun AccountsSection(accounts: List<AccountEntity>, onSeeAllClick: () -> Unit) {
     Column(modifier = Modifier.padding(vertical = 16.dp)) {
         Row(
             modifier = Modifier
@@ -585,7 +588,7 @@ fun AccountsSection(accounts: List<AccountEntity>) {
                 style = MaterialTheme.typography.labelSmall, 
                 color = MaterialTheme.colorScheme.primary, 
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.clickable { /* TODO: onSeeAllClick */ }
+                modifier = Modifier.clickable { onSeeAllClick() }
             )
         }
         Spacer(modifier = Modifier.height(12.dp))
