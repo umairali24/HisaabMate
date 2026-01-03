@@ -295,7 +295,7 @@ fun PlayfulDashboardContent(
                         color = PlayfulPrimary, 
                         fontWeight = FontWeight.Bold, 
                         style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier.clickable { navController.navigate(Screen.AddAccount.route) }
+                         modifier = Modifier.clickable { navController.navigate(Screen.ManageAccounts.route) }
                     )
                 }
             }
