@@ -15,6 +15,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -60,30 +62,34 @@ fun OnboardingScreen(
             }, label = "OnboardingTransition"
         ) { step ->
             when (step) {
-                0 -> ProfileEntryScreen(
+                0 -> WelcomeScreen(
+                    onNext = { viewModel.onEvent(OnboardingEvent.NextStep) }
+                )
+                1 -> ProfileEntryScreen(
                     name = uiState.userName,
                     currency = uiState.currency,
-                    onNext = { name, curr -> 
+                    onNext = { name, curr ->
                         viewModel.onEvent(OnboardingEvent.UpdateProfile(name, curr))
                         viewModel.onEvent(OnboardingEvent.NextStep)
-                    }
+                    },
+                    onBack = { viewModel.onEvent(OnboardingEvent.PreviousStep) }
                 )
-                1 -> LanguageSelectionScreen(
+                2 -> LanguageSelectionScreen(
                     selectedLanguage = uiState.selectedLanguage,
                     onLanguageSelected = { viewModel.onEvent(OnboardingEvent.UpdateLanguage(it)) },
                     onNext = { viewModel.onEvent(OnboardingEvent.NextStep) },
                     onBack = { viewModel.onEvent(OnboardingEvent.PreviousStep) }
                 )
-                2 -> ThemeSelectionScreen(
+                3 -> ThemeSelectionScreen(
                     selectedThemeStyle = uiState.selectedThemeStyle,
                     onThemeStyleSelected = { viewModel.onEvent(OnboardingEvent.UpdateThemeStyle(it)) },
                     onNext = { viewModel.onEvent(OnboardingEvent.NextStep) },
                     onBack = { viewModel.onEvent(OnboardingEvent.PreviousStep) }
                 )
-                3 -> FinalTouchScreen(
+                4 -> FinalTouchScreen(
                     isDarkMode = uiState.selectedTheme == "DARK",
-                    onDarkModeChanged = { isDark -> 
-                        viewModel.onEvent(OnboardingEvent.UpdateTheme(if (isDark) "DARK" else "LIGHT")) 
+                    onDarkModeChanged = { isDark ->
+                        viewModel.onEvent(OnboardingEvent.UpdateTheme(if (isDark) "DARK" else "LIGHT"))
                     },
                     onStart = {
                         viewModel.onEvent(OnboardingEvent.CompleteOnboarding)
@@ -99,10 +105,49 @@ fun OnboardingScreen(
 }
 
 @Composable
+fun WelcomeScreen(
+    onNext: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "App Logo",
+            modifier = Modifier.size(120.dp)
+        )
+        Spacer(modifier = Modifier.height(24.dp))
+        Text(
+            text = "Welcome to HisaabMate",
+            style = MaterialTheme.typography.headlineLarge,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Your Privacy-First Finance Manager",
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center
+        )
+        Spacer(modifier = Modifier.height(48.dp))
+        StitchButton(
+            text = "Get Started",
+            onClick = onNext,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+
+@Composable
 fun ProfileEntryScreen(
     name: String,
     currency: String,
-    onNext: (String, String) -> Unit
+    onNext: (String, String) -> Unit,
+    onBack: () -> Unit
 ) {
     var currentName by remember { mutableStateOf(name) }
     var currentCurrency by remember { mutableStateOf(currency) }
@@ -140,16 +185,26 @@ fun ProfileEntryScreen(
         }
 
         Spacer(modifier = Modifier.weight(1f))
-        StitchButton(
-            text = "Next",
-            onClick = {
-                if(currentName.isBlank()) {
-                    error = "Name cannot be empty"
-                } else {
-                    onNext(currentName, currentCurrency)
-                }
+
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            OutlinedButton(
+                onClick = onBack,
+                modifier = Modifier.weight(1f).height(56.dp)
+            ) {
+                Text("Back")
             }
-        )
+            StitchButton(
+                text = "Next",
+                onClick = {
+                    if (currentName.isBlank()) {
+                        error = "Name cannot be empty"
+                    } else {
+                        onNext(currentName, currentCurrency)
+                    }
+                },
+                modifier = Modifier.weight(1f)
+            )
+        }
     }
 }
 
