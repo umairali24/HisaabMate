@@ -4,7 +4,11 @@
     <string name="select_account_type">Select Account Type / Khaata Qisam Muntakhab Karein</string>
     <string name="bank_account">Bank Account</string>
     <string name="digital_wallet">Digital Wallet</string>
+    <string name="bank_digital_wallet">Bank / Digital Wallet</string>
     <string name="credit_card">Credit Card</string>
+    <string name="manage_accounts">Manage Accounts</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="no_accounts_found">No accounts found.</string>
     <string name="details_suffix">Details / Tafseelat</string>
     <string name="bank_name">Bank Name / Bank Ka Naam</string>
     <string name="account_name">Account Name / Khaatay Ka Naam</string>

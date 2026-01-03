@@ -46,11 +46,15 @@ import com.hisaabmate.presentation.components.StitchTextField
 @Composable
 fun AddAccountScreen(
     onNavigateUp: () -> Unit,
-    viewModel: AddAccountViewModel = hiltViewModel()
+    viewModel: AddAccountViewModel = hiltViewModel(),
+    accountId: Int? = null
 ) {
     val context = LocalContext.current
     LaunchedEffect(Unit) {
         viewModel.loadBanks(context)
+        if (accountId != null && accountId != 0 && viewModel.accountId == null) {
+            viewModel.loadAccount(accountId)
+        }
     }
 
     Scaffold(
@@ -63,7 +67,7 @@ fun AddAccountScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-            text = stringResource(R.string.add_account_title),
+            text = if (accountId != null) stringResource(R.string.edit_account) else stringResource(R.string.add_account_title),
             style = MaterialTheme.typography.titleLarge
         )
             }
@@ -85,18 +89,10 @@ fun AddAccountScreen(
                 )
                 
                 StitchSelectionCard(
-                    title = stringResource(R.string.bank_account),
+                    title = stringResource(R.string.bank_digital_wallet),
                     selected = false,
                     onClick = { viewModel.onTypeSelected("BANK") },
                     icon = { Icon(Icons.Default.AccountBalance, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                    modifier = Modifier.padding(bottom = 12.dp)
-                )
-
-                StitchSelectionCard(
-                    title = stringResource(R.string.digital_wallet),
-                    selected = false,
-                    onClick = { viewModel.onTypeSelected("WALLET") },
-                    icon = { Icon(Icons.Default.Wallet, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
 
