@@ -1,6 +1,7 @@
 package com.hisaabmate.presentation.dashboard
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -21,6 +22,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import android.content.Context
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -34,9 +38,12 @@ import java.util.Locale
 import com.hisaabmate.presentation.theme.*
 import com.hisaabmate.data.local.entity.AccountEntity
 import com.hisaabmate.data.local.entity.TransactionEntity
-
+import com.hisaabmate.data.local.AccountType
 
 import com.hisaabmate.presentation.navigation.Screen
+
+// Resource ID for fallback icon
+import com.hisaabmate.R
 
 @Composable
 fun DashboardScreen(
@@ -49,6 +56,80 @@ fun DashboardScreen(
     when (uiState.currentTheme) {
         "PLAYFUL" -> PlayfulDashboardContent(navController = navController, uiState = uiState)
         else -> MinimalistDashboardContent(navController = navController, uiState = uiState)
+    }
+}
+
+@Composable
+fun AccountIcon(account: AccountEntity, color: Color, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val type = account.account_type
+
+    when (type) {
+        AccountType.WALLET -> {
+            Icon(
+                imageVector = Icons.Default.AccountBalanceWallet,
+                contentDescription = "Wallet",
+                modifier = modifier,
+                tint = color
+            )
+        }
+        AccountType.BANK -> {
+            BankIcon(account, context, color, modifier)
+        }
+        AccountType.CREDIT_CARD -> {
+            Box(
+                modifier = modifier,
+                contentAlignment = Alignment.BottomEnd
+            ) {
+                // Pass empty modifier to BankIcon as the size is handled by the Box
+                BankIcon(account, context, color, Modifier.matchParentSize())
+                // Overlay Credit Card Icon
+                Icon(
+                    imageVector = Icons.Default.CreditCard,
+                    contentDescription = "Credit Card",
+                    modifier = Modifier
+                        .size(12.dp)
+                        .offset(x = (-2).dp, y = (-2).dp) // Shift inward slightly
+                        .background(Color.White, CircleShape)
+                        .padding(1.dp),
+                    tint = Color.Black
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun BankIcon(account: AccountEntity, context: Context, fallbackTint: Color, modifier: Modifier) {
+    val resName = account.logo_res_name
+    val resId = if (resName != null) {
+        context.resources.getIdentifier(resName, "drawable", context.packageName)
+    } else 0
+
+    if (resId != 0) {
+        Image(
+            painter = painterResource(id = resId),
+            contentDescription = account.bank_name,
+            modifier = modifier
+        )
+    } else {
+        // Fallback
+        val fallbackId = context.resources.getIdentifier("ic_bank_generic", "drawable", context.packageName)
+        if (fallbackId != 0) {
+             Image(
+                painter = painterResource(id = fallbackId),
+                contentDescription = "Bank",
+                modifier = modifier,
+                // Apply tint if it's a vector that supports it, or use Icon
+            )
+        } else {
+             Icon(
+                imageVector = Icons.Default.AccountBalance,
+                contentDescription = "Bank",
+                modifier = modifier,
+                tint = fallbackTint
+            )
+        }
     }
 }
 
@@ -315,7 +396,7 @@ fun PlayfulDashboardContent(
                         ) {
                             Column(Modifier.padding(16.dp)) {
                                 Box(Modifier.size(40.dp).background(Color(0xFFFEF3C7), CircleShape), contentAlignment = Alignment.Center) {
-                                    Text("💵", fontSize = 20.sp)
+                                    AccountIcon(account = acc, color = Color.Black, modifier = Modifier.size(24.dp))
                                 }
                                 Spacer(Modifier.height(12.dp))
                                 Text(acc.name, style = MaterialTheme.typography.labelSmall, color = PlayfulSecondary, fontWeight = FontWeight.Bold)
@@ -595,16 +676,11 @@ fun AccountsSection(accounts: List<AccountEntity>) {
         ) {
             items(accounts.size) { index ->
                 val account = accounts[index]
-                val icon = when(account.account_type) {
-                    com.hisaabmate.data.local.AccountType.BANK -> Icons.Default.AccountBalance
-                    com.hisaabmate.data.local.AccountType.WALLET -> Icons.Default.AccountBalanceWallet
-                    else -> Icons.Default.Smartphone
-                }
                 
                 AccountCard(
                     name = account.name, 
                     balance = "Rs. ${String.format("%,.0f", account.current_balance)}", 
-                    icon = icon, 
+                    iconContent = { AccountIcon(account = account, color = Primary, modifier = Modifier.size(20.dp)) },
                     color = Primary
                 )
             }
@@ -616,7 +692,7 @@ fun AccountsSection(accounts: List<AccountEntity>) {
 }
 
 @Composable
-fun AccountCard(name: String, balance: String, icon: ImageVector, color: Color) {
+fun AccountCard(name: String, balance: String, iconContent: @Composable () -> Unit, color: Color) {
     Card(
         modifier = Modifier.width(150.dp),
         shape = RoundedCornerShape(16.dp),
@@ -636,7 +712,7 @@ fun AccountCard(name: String, balance: String, icon: ImageVector, color: Color) 
                     .background(color.copy(alpha = 0.1f)),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(icon, contentDescription = null, tint = color, modifier = Modifier.size(20.dp))
+                iconContent()
             }
             Column {
                 Text(text = name, style = MaterialTheme.typography.bodySmall, color = Color.Gray)
