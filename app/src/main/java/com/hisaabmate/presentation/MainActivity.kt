@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.hisaabmate.presentation.dashboard.DashboardScreen
 import com.hisaabmate.presentation.add_account.AddAccountScreen
+import com.hisaabmate.presentation.manage_accounts.ManageAccountsScreen
 import com.hisaabmate.presentation.onboarding.OnboardingScreen
 import com.hisaabmate.presentation.navigation.Screen
 import com.hisaabmate.presentation.theme.HisaabMateTheme
@@ -26,6 +27,8 @@ import com.hisaabmate.presentation.theme.ThemeType
 import com.hisaabmate.presentation.transaction.AddTransactionScreen
 import com.hisaabmate.presentation.settings.SettingsScreen
 import com.hisaabmate.presentation.budget.BudgetScreen
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
 import dagger.hilt.android.AndroidEntryPoint
 import com.hisaabmate.R
 
@@ -100,8 +103,25 @@ class MainActivity : androidx.fragment.app.FragmentActivity() {
                             composable(Screen.Dashboard.route) {
                                 DashboardScreen(navController = navController)
                             }
-                            composable(Screen.AddAccount.route) {
-                                AddAccountScreen(onNavigateUp = { navController.navigateUp() })
+                            composable(Screen.ManageAccounts.route) {
+                                ManageAccountsScreen(
+                                    onNavigateUp = { navController.navigateUp() },
+                                    onAddAccount = { navController.navigate(Screen.AddAccount.route) },
+                                    onEditAccount = { accountId -> navController.navigate("${Screen.AddAccount.route}?accountId=$accountId") }
+                                )
+                            }
+                            composable(
+                                route = "${Screen.AddAccount.route}?accountId={accountId}",
+                                arguments = listOf(navArgument("accountId") {
+                                    type = NavType.IntType
+                                    defaultValue = 0
+                                })
+                            ) { backStackEntry ->
+                                val accountId = backStackEntry.arguments?.getInt("accountId")
+                                AddAccountScreen(
+                                    onNavigateUp = { navController.navigateUp() },
+                                    accountId = if (accountId == 0) null else accountId
+                                )
                             }
                             composable(Screen.Onboarding.route) {
                                 OnboardingScreen(navController = navController)
